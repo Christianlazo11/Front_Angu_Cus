@@ -1,7 +1,7 @@
-export class Cliente {
+export class Customer  {
     id:number | undefined;
-    nombre: string | undefined;
-    apellido:string | undefined;
+    name: string | undefined;
+    lastName:string | undefined;
     createAt:string | undefined;
     email:string | undefined;
 }
