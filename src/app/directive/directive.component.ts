@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-directive',
@@ -10,5 +11,12 @@ export class DirectiveComponent {
   constructor() { }
   setShowListCourse(): void {
     this.showListCourse = !this.showListCourse;
+  }
+
+  showModal() {
+    Swal.fire({
+    icon: 'info',
+    title:'Hola Mundo',
+    text: 'Error 404',});
   }
 }

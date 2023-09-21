@@ -3,6 +3,7 @@
     <div class="card-header">
         Listado de cursos
     </div>
+    <button class="btn btn-primary" (click) = "showModal()">Prueba</button>
     <ul class="list-group" *ngIf="showListCourse == true">
         <li class="list-grup-item" *ngFor="let course of listCourse">
             {{course}}
