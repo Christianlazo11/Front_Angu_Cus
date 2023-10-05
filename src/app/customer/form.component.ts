@@ -3,12 +3,16 @@ import { Customer } from './customer';
 import { CustomerService } from './customer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from "sweetalert2";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
 export class FormComponent {
+
+  faUser = faUser;
 
   customer: Customer = new Customer();
   title:string = "Crear Cliente";
@@ -32,8 +36,9 @@ export class FormComponent {
   public create(): void {
     this.customerService.create(this.customer).subscribe(
       response => {
+        console.log(response);
         this.router.navigate(['/clientes'])
-        Swal.fire('Nuevo Cliente', `Cliente ${this.customer.name} creado con exito`, 'success');
+        Swal.fire('Nuevo Cliente', `Cliente ${response.name} creado con exito`, 'success');
       }
     )
   }

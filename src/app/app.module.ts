@@ -13,6 +13,7 @@ import { DirectiveComponent } from './directive/directive.component';
 import { FormComponent } from './customer/form.component';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    FontAwesomeModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

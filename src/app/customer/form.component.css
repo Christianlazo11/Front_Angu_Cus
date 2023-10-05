@@ -1,0 +1,11 @@
+.card-form {
+    min-width: 32rem;
+    border-radius: 1.2rem;
+}
+
+
+@media (max-width: 568px) {
+    .card-form {
+        min-width: 100%;
+    }
+}

@@ -2,12 +2,19 @@ import { Component } from '@angular/core';
 import { Customer } from './customer';
 import { CustomerService } from "./customer.service";
 import Swal from "sweetalert2";
+import { faCoffee, faMugSaucer, faCirclePlus, faUserPlus, faTrash, faUserPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent {
+  faCoffee = faCoffee;
+  faMugSaucer = faMugSaucer;
+  faCirclePlus = faCirclePlus;
+  faUserPlus = faUserPlus;
+  faTrash = faTrash;
+  faUserPen = faUserPen;
 
   customers: Customer[] | undefined;
 
