@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { CustomerService } from './customer/customer.service';
 import { DirectiveComponent } from './directive/directive.component';
-import { FormComponent } from './customer/form.component';
+import { FormComponent } from './customer/FormComponent';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

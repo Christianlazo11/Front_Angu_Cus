@@ -24,16 +24,21 @@ export class CustomerService {
     return this.http.post(this.urlEndpoint, customer, {headers: this.httpHeaders}).pipe(
       map((response: any) => response.cliente as Customer),
       catchError(e => {
+
+        console.log("Probando!!! => " + typeof(e.error.error));
+        if(e.status == 400) {
+          return throwError(() => e.error.error);
+        }
         console.log(e.error.message);
         Swal.fire(e.error.message, e.error.error, "error");
-        return throwError(() => Error(e));
+        return throwError(() => new Error(e));
       })
     )
   }
 
   getCustomer(id: number): Observable<Customer> {
     return this.http.get<Customer>(`${this.urlEndpoint}/${id}`).pipe(
-      map((response: any) => response.cliente as Customer),
+      // map((response: any) => response.cliente as Customer),
       catchError(e => {
         this.router.navigate(['/clientes']);
         console.log(e.error.message);
@@ -47,7 +52,14 @@ export class CustomerService {
     return this.http.put<Customer>(`${this.urlEndpoint}/${customer.id}`, customer, {headers: this.httpHeaders}).pipe(
       map((response: any) => response.cliente as Customer),
       catchError(e => {
+        
+        console.log("Probando!!! => " + e.error.errors[0].defaultMessage)
+        if(e.status == 400) {
+          return throwError(() => e.error.errors[0].defaultMessage);
+        }
+
         this.router.navigate(['/clientes']);
+
         console.log(e.error.message);
         Swal.fire(e.error.message, e.error.error, "error");
         return throwError(() => new Error(e));

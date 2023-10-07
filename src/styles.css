@@ -12,3 +12,23 @@ body {
 .my-container {
     height: calc(100vh - 7rem);
 }
+
+html::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #FFC300;
+}
+
+.card__animate {
+    filter: drop-shadow(5px 0 10px black);
+}
+
+.card__animate:hover {
+    filter: drop-shadow(0 0 2px black);
+}

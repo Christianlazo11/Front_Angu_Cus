@@ -1,49 +1,92 @@
+<ul class="alert alert-danger" *ngIf="errors.length > 0">
+    <li *ngFor="let err of errors">
+        {{err}}
+    </li>
+</ul>
+
 <div class="container d-flex align-items-center justify-content-center form-component my-container">
-    <div class="card bg-dark text-white card-form">
+    <div class="card bg-dark text-white card-form card__animate">
 
         <div class="card-header text-center mt-3">
             <div class="my-3">
                 <fa-icon class="fa-2xl" [icon]="faUser"></fa-icon>
             </div>
             <h3>{{title}}</h3>
-            
+
         </div>
         <div class="card-body">
 
-            <form>
+            <form #customerForm="ngForm">
                 <div class="form-group row my-4">
-                    <label for="" class="col-form-label col-sm-3">Nombre</label>
+                    <label for="name" class="col-form-label col-sm-3">Nombre</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" [(ngModel)]="customer.name" name="name">
+                        <!-- <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" required
+                        minlength="4" 
+                        #name="ngModel"> -->
+                        <input type="text" class="form-control" [(ngModel)]="customer.name" name="name"
+                        #name="ngModel">
+
+                        <div class="alert alert-danger text-sm" *ngIf="name.invalid && (name.dirty || name.touched)">
+                            <div *ngIf="name.errors?.['required']">
+                                Nombre es requerido
+                            </div>
+                            <div *ngIf="name.errors?.['minlength']">
+                                Nombre debe tener al menos 4 caracteres
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group row my-4">
-                    <label for="" class="col-form-label col-sm-3">Apellido</label>
+                    <label for="lastName" class="col-form-label col-sm-3">Apellido</label>
 
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" [(ngModel)]="customer.lastName" name="lastName">
+                        <input class="form-control" type="text" [(ngModel)]="customer.lastName" name="lastName" required
+                            #lastName="ngModel">
+
+                        <div class="alert alert-danger text-sm"
+                            *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                            <div *ngIf="lastName.errors?.['required']">
+                                Apellido es requerido
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group row my-4">
-                    <label for="" class="col-form-label col-sm-3">Email</label>
+                    <label for="email" class="col-form-label col-sm-3">Email</label>
 
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" [(ngModel)]="customer.email" name="email">
+                        <input class="form-control" type="text" [(ngModel)]="customer.email" name="email" required email
+                            #email="ngModel">
+
+                        <div class="alert alert-danger text-sm" *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors?.['required']">
+                                Correo es requerido
+                            </div>
+                            <div *ngIf="email.errors?.['email']">
+                                El email debe tener un formato válido
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center mt-5">
                     <div class="col-8">
+                        <!-- <button class="btn btn-warning w-100" role="button" (click)="create()"
+                            *ngIf="!customer.id else elseBLock" [disabled]="!customerForm.form.valid">
+                            Crear
+                        </button> -->
                         <button class="btn btn-warning w-100" role="button" (click)="create()"
                             *ngIf="!customer.id else elseBLock">
                             Crear
                         </button>
 
                         <ng-template #elseBLock>
-                            <button class="btn btn-warning text-white" role="button" (click)="update()">
+                            <button class="btn btn-warning text-white" role="button" (click)="update()"
+                                [disabled]="!customerForm.form.valid">
                                 Actualizar
                             </button>
                         </ng-template>

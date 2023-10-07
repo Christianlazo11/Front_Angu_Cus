@@ -3,6 +3,11 @@
     border-radius: 1.2rem;
 }
 
+.text-sm {
+    font-size: 0.7rem;
+    padding: 0.2rem;
+    margin-top: 0.5rem;
+}
 
 @media (max-width: 568px) {
     .card-form {
