@@ -15,7 +15,17 @@
                     <label for="" class="col-form-label col-sm-3">Nombre</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" [(ngModel)]="customer.name" name="name">
+                        <input type="text" class="form-control" [(ngModel)]="customer.name" required minlength="4" name="name" #name="ngModel">
+
+                        <!-- <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                            <div *ngIf="name.errors.['required']">
+                                
+                            </div>
+
+                            <div *ngIf="name.errors.['minlength']">
+                                
+                            </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -23,7 +33,7 @@
                     <label for="" class="col-form-label col-sm-3">Apellido</label>
 
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" [(ngModel)]="customer.lastName" name="lastName">
+                        <input class="form-control" type="text" [(ngModel)]="customer.lastName" required name="lastName">
                     </div>
                 </div>
 
@@ -31,7 +41,7 @@
                     <label for="" class="col-form-label col-sm-3">Email</label>
 
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" [(ngModel)]="customer.email" name="email">
+                        <input class="form-control" type="text" [(ngModel)]="customer.email" required name="email">
                     </div>
                 </div>
 

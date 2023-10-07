@@ -24,8 +24,8 @@ export class CustomerService {
     return this.http.post(this.urlEndpoint, customer, {headers: this.httpHeaders}).pipe(
       map((response: any) => response.cliente as Customer),
       catchError(e => {
-        console.log(e.error.message);
-        Swal.fire(e.error.message, e.error.error, "error");
+        console.log(e.error.error);
+        Swal.fire(e.error.error[0], e.error.error, "error");
         return throwError(() => Error(e));
       })
     )
